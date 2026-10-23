@@ -42,7 +42,19 @@ The live quick check exercises startup, synthetic keyboard movement along both a
 
 Game previews use an opaque-origin sandbox iframe with network access denied by a restrictive content-security policy. Editing runs code locally in that preview. The static app does not send edits to alphaBell or execute server-side code. Recorded evidence remains separate from live checks on your edited source.
 
-## Files
+## Community Replay Lab
+
+The [Replay Lab](https://alphabell-flint-repair-clinic.static.hf.space/replay.html) turns [nootxlm's community suggestion](https://discuss.huggingface.co/t/190935/4) into an alphaBell-authored illustrative simulation. It is separate from the three historical Flint-generated cases and does not change their source or evidence.
+
+A ten-second asteroid dodger resets position and score but leaves its old virtual spawn timer active. Two fresh runs match exactly. The restarted run first diverges at 1000 ms, when a second timer doubles cumulative spawn events. Resetting the timers restores matching gameplay state across all 201 saved samples. Counts are cumulative spawns, not a claim that twice as many asteroids remain active after collisions or exits.
+
+![The alphaBell-authored Replay Lab comparing a fresh run with a restarted run at the first doubled spawn, with one versus two cumulative spawns at one second.](replay-preview.png)
+
+The lab uses seeded randomness, an explicit input schedule and 50 ms simulation steps. Wall-clock animation only displays saved states. Timer diagnostics are outside the gameplay-state comparison, so the first gameplay split occurs at the extra spawn rather than at timer creation. Download the complete experiment, including source-community credit, inputs and state snapshots.
+
+`replay-core.mjs` contains the independent simulation. `replay.html`, `replay.css` and `replay.js` provide its interface. Run `node --test replay-core.test.mjs` for 13 core groups and `python verify_replay.py` for browser checks. The separate 30-second seeded soak checks finite values and travel bounds for this illustration; it does not establish arbitrary gameplay correctness.
+
+## Original case files
 
 `cases.json` contains the three complete before/after documents, recorded feedback, diffs and provenance. `index.html`, `style.css` and `app.js` are the complete application. Serve this directory with any static HTTP server.
 
