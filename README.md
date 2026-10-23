@@ -5,6 +5,8 @@ colorFrom: green
 colorTo: yellow
 sdk: static
 app_file: index.html
+pinned: true
+thumbnail: https://huggingface.co/spaces/alphabell/Flint-Repair-Clinic/resolve/main/thumbnail.png
 license: apache-2.0
 short_description: Fix three real Flint bugs. Bring the games back to life.
 models:
@@ -23,6 +25,10 @@ tags:
 # Flint Repair Clinic by alphaBell
 
 Three real Flint coding failures, with editable source, browser errors, exact recorded repairs and playable results.
+
+**[Try Flint Repair Clinic](https://huggingface.co/spaces/alphabell/Flint-Repair-Clinic)**
+
+![Flint Repair Clinic showing the repaired Canvas arc call beside the playable Moon Garden game, with source editing and browser checks.](preview.png)
 
 - **Moon Garden:** a circle loses its start angle.
 - **Bee Bop:** one parenthesis stops the entire game.
