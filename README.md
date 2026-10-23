@@ -5,6 +5,7 @@ colorFrom: green
 colorTo: yellow
 sdk: static
 app_file: index.html
+pinned: true
 thumbnail: https://huggingface.co/spaces/alphabell/Flint-Repair-Clinic/resolve/main/thumbnail.png
 license: apache-2.0
 short_description: Fix three real Flint bugs. Bring the games back to life.
