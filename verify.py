@@ -90,6 +90,17 @@ def verify(base_url):
                 assert page.locator('body').get_attribute('data-escaped') is None
             checks.append('Commented, uppercase and missing heads cannot hide the child policy')
 
+            navigations = []
+            sentinel = base_url + 'navigation-sentinel'
+            page.on('request', lambda request: navigations.append(request.url) if 'navigation-sentinel' in request.url else None)
+            source = cloud['after'] + '<script>setTimeout(()=>location.href=' + json.dumps(sentinel) + ',100)</script>'
+            page.locator('#editor').fill(source)
+            page.locator('#run').click()
+            page.wait_for_timeout(700)
+            assert not navigations
+            assert page.locator('#case-title').inner_text() == 'Cloud Courier'
+            checks.append('Parent frame policy blocks child navigation before any network request')
+
             page.goto(base_url + '?case=moon-garden')
             page.wait_for_selector('[data-case="bee-bop"]')
             page.locator('[data-case="bee-bop"]').click()
@@ -107,9 +118,10 @@ def verify(base_url):
                     mobile.locator('#repair').click()
                     mobile.wait_for_function("() => document.getElementById('status').textContent === 'Running'")
                     game = mobile.locator('#game').element_handle().content_frame()
-                    game.wait_for_function("() => { const pad=document.querySelector('.pad') || document.querySelector('.controls'); return !pad || pad.getBoundingClientRect().bottom <= innerHeight + 2; }")
                     start = game.locator('#startBtn, #start')
                     start.tap()
+                    # Moon Garden reveals its pad after the first real touch.
+                    game.wait_for_function("() => { const buttons=[...document.querySelectorAll('#upBtn,#downBtn,#leftBtn,#rightBtn,[data-dir]')]; return buttons.length >= 4 && buttons.every(b => { const r=b.getBoundingClientRect(); return r.height > 0 && r.top >= 0 && r.bottom <= innerHeight + 2 && r.left >= 0 && r.right <= innerWidth + 2; }); }")
                     before = game.evaluate('window.arcade.snapshot()')
                     direction = game.locator('#rightBtn, [data-dir="right"]')
                     direction.scroll_into_view_if_needed()
