@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Three real Flint coding failures. Find the bug, patch the game, and play the repair. An open browser-game debugging lab by alphaBell.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Flint Repair Clinic by alphaBell</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<header><a class="brand" href="https://huggingface.co/alphabell" target="_blank" rel="noopener">alphaBell <span>/ Repair Clinic</span></a><a href="https://huggingface.co/spaces/alphabell/Flint-Arcade" target="_blank" rel="noopener">Build a game <span aria-hidden="true">↗</span></a></header>
+<main>
+<section class="intro">
+  <div><p class="eyebrow">FLINT Q8_0 · REAL REPAIR TRACES</p><h1>A tiny bug.<br>A broken world.</h1><p class="lead">Find what broke the game.<br>Patch it. Play it. Inspect the evidence.</p></div>
+  <div class="hero-code" aria-hidden="true"><div class="window-dots"><i></i><i></i><i></i></div><span class="code-comment">// A whole game stops here.</span><code>ctx.arc(x, y, r,<br>&nbsp;&nbsp;<mark>Math.PI * 2</mark>);</code><span class="error-underline"></span><p>5 arguments required. Only 4 present.</p></div>
+</section>
+<nav class="cases" aria-label="Choose a repair case" id="case-list"></nav>
+<section class="workshop" aria-labelledby="case-title">
+  <div class="case-heading"><div><p class="eyebrow" id="case-label"></p><h2 id="case-title">Loading cases</h2></div><button class="text-button" id="share" type="button">Copy case link</button></div>
+  <div class="workbench">
+    <div class="source-panel">
+      <div class="panel-head"><h3>Fix the source</h3><span id="source-state">Original failure</span></div>
+      <div class="source-tools"><button id="fault" type="button">Jump to bug</button><button id="hint" type="button" aria-expanded="false" aria-controls="hint-text">Hint</button></div>
+      <p id="hint-text" class="hint" hidden></p>
+      <label class="sr-only" for="editor">Complete game HTML, editable</label>
+      <textarea id="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" wrap="off"></textarea>
+      <p class="editor-caption" id="editor-caption"></p>
+      <div class="actions"><button class="primary" id="run" type="button">Run my code <span aria-hidden="true">↗</span></button><button id="repair" type="button">Show recorded repair</button><button class="text-button" id="reset" type="button">Reset</button></div>
+    </div>
+    <div class="play-panel">
+      <div class="panel-head"><h3>Play the result</h3><span class="status" id="status" role="status" aria-live="polite">Loading</span></div>
+      <div class="game-wrap"><iframe id="game" title="Selected game in an isolated preview" sandbox="allow-scripts allow-pointer-lock" referrerpolicy="no-referrer" allow=""></iframe></div>
+      <div class="result" id="result" aria-live="polite"></div>
+      <div class="play-tools"><button id="check" type="button">Check controls</button><button id="restart" type="button">Restart game</button></div>
+      <p class="caption">Click the game to use arrows or WASD. Phone controls are inside the game.</p>
+    </div>
+  </div>
+  <details id="evidence"><summary>Recorded repair and evidence</summary><div class="evidence-body"><p id="case-note"></p><pre id="diff"></pre><div class="evidence-grid"><div><h3>Original browser error</h3><pre id="original-error"></pre></div><div><h3>Recorded checks</h3><p id="recorded-checks"></p><p class="caption">Historical smoke checks cover startup, brief input and restart. They do not establish complete gameplay or model success rates.</p></div></div><p class="hashes" id="hashes"></p><div class="evidence-links"><button id="download" type="button">Download this case</button><a href="cases.json" download>All 3 cases (JSON)</a><a id="source-dataset" target="_blank" rel="noopener">Original dataset ↗</a></div></div></details>
+</section>
+<section class="notes"><div><p class="eyebrow">WHY THESE FAILURES MATTER</p><h2>Valid output can still break.</h2></div><div><p>Flint wrote these games and their recorded repairs. Each pair comes from a real alphaBell development run. The original source, the browser error and the exact repaired candidate are here to inspect.</p><p>A format constraint can give you valid HTML. A browser still has to execute it. A game that starts still needs its controls and objectives tested.</p><p class="caption">These historical examples used full-document repairs. The current Arcade uses focused edits and bounded planning. This Clinic runs saved code locally in your browser, with no model call or account required.</p></div></section>
+<footer><a href="https://huggingface.co/alphabell" target="_blank" rel="noopener">alphaBell</a><a href="https://huggingface.co/datasets/alphabell/Flint-Arcade-Trajectories" target="_blank" rel="noopener">Repair traces</a><a href="https://huggingface.co/RecursiveSI/flint" target="_blank" rel="noopener">Flint by Recursive</a><a href="https://huggingface.co/spaces/alphabell/Flint-Repair-Clinic/tree/main" target="_blank" rel="noopener">Source · Apache 2.0</a></footer>
+</main>
+<p id="toast" role="status" hidden></p>
+</body></html>

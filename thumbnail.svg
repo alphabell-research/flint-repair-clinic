@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="648" viewBox="0 0 1200 648">
+<rect width="1200" height="648" fill="#f8f8f1"/>
+<g font-family="Arial,Helvetica,sans-serif">
+<text x="70" y="80" fill="#19372a" font-size="25" font-weight="700">alphaBell <tspan fill="#647268" font-size="20" font-weight="400">/ Flint Repair Clinic</tspan></text>
+<text x="70" y="168" fill="#246b45" font-size="14" font-weight="700" letter-spacing="2.5">REAL CODE. REAL ERRORS. PLAYABLE REPAIRS.</text>
+<text x="66" y="267" fill="#19372a" font-size="80" font-weight="700" letter-spacing="-4">A tiny bug.</text>
+<text x="66" y="356" fill="#19372a" font-size="80" font-weight="700" letter-spacing="-4">A broken</text>
+<text x="66" y="445" fill="#19372a" font-size="80" font-weight="700" letter-spacing="-4">world.</text>
+<text x="70" y="520" fill="#647268" font-size="24">Fix the source. Bring the game back.</text>
+<rect x="70" y="562" width="156" height="38" rx="19" fill="#246b45"/>
+<text x="148" y="587" fill="white" font-size="16" text-anchor="middle" font-weight="700">FLINT Q8_0</text>
+<g transform="translate(665 180) rotate(2 220 150)">
+<rect x="10" y="12" width="430" height="320" rx="18" fill="#e5ebdd"/>
+<rect width="430" height="320" rx="18" fill="white" stroke="#dce2d7"/>
+<circle cx="29" cy="28" r="4" fill="#cdd5ca"/><circle cx="44" cy="28" r="4" fill="#cdd5ca"/><circle cx="59" cy="28" r="4" fill="#cdd5ca"/>
+<text x="28" y="84" fill="#647268" font-size="16" font-family="monospace">// The world stops here.</text>
+<text x="28" y="141" fill="#294837" font-size="27" font-family="monospace">ctx.arc(x, y, r,</text>
+<rect x="60" y="160" width="282" height="37" fill="#f8e8b8"/>
+<text x="60" y="188" fill="#294837" font-size="27" font-family="monospace">Math.PI * 2);</text>
+<path d="M28 235H402" stroke="#dce2d7"/>
+<text x="28" y="272" fill="#aa3b32" font-size="16" font-family="monospace">5 arguments required.</text>
+<text x="28" y="296" fill="#aa3b32" font-size="16" font-family="monospace">Only 4 present.</text>
+</g>
+</g></svg>
