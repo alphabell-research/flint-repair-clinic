@@ -106,6 +106,8 @@ function instrument(source, runId) {
       finally{key('keyup','ArrowRight');key('keyup','ArrowDown');busy=false;}
     });
     addEventListener('DOMContentLoaded',()=>setTimeout(()=>{
+      const size=()=>send('size',{height:Math.min(760,Math.max(320,document.documentElement.scrollHeight))});
+      size();new ResizeObserver(size).observe(document.body);
       try{snap();send('ready',{faults});}catch(err){send('probe-error',{message:clean(err.message)});}
     },220));
   })();<\/script>`;
@@ -134,7 +136,9 @@ function command(name) { frame.contentWindow.postMessage({command:name,runId:seq
 addEventListener('message', e => {
   const d=e.data;
   if (e.source !== frame.contentWindow || !d || d.clinic !== true || d.runId !== sequence) return;
-  if (d.type==='error') {
+  if (d.type==='size') {
+    if(Number.isFinite(d.height))frame.parentElement.style.height=Math.round(Math.min(760,Math.max(320,d.height)))+'px';
+  } else if (d.type==='error') {
     clearTimeout(bootTimer);
     const message = typeof d.message === 'string' ? d.message.slice(0,700) : 'Game execution error';
     if (!errors.includes(message) && errors.length < 5) errors.push(message);

@@ -107,6 +107,7 @@ def verify(base_url):
                     mobile.locator('#repair').click()
                     mobile.wait_for_function("() => document.getElementById('status').textContent === 'Running'")
                     game = mobile.locator('#game').element_handle().content_frame()
+                    game.wait_for_function("() => { const pad=document.querySelector('.pad') || document.querySelector('.controls'); return !pad || pad.getBoundingClientRect().bottom <= innerHeight + 2; }")
                     start = game.locator('#startBtn, #start')
                     start.tap()
                     before = game.evaluate('window.arcade.snapshot()')
